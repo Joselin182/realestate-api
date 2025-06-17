@@ -12,3 +12,4 @@ app.get('/api/inmuebles', (req, res) => {
 });
 
 module.exports = app;
+// Esto es solo un comentario para activar workflow
