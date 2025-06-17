@@ -40,8 +40,10 @@ jobs:
 
       - name: Reportar éxito
         if: success()
-        run: echo "✅ API funcional en Node ${ { matrix.node } }"
-
-      - name: Reportar fallo
+        run: echo "✅ API funcional en Node ${{ matrix.node }}"
+               
+               
+               - name: Reportar error
         if: failure()
-        run: echo "❌ Error detectado en los tests para Node ${ { matrix.node } }"
+        run: echo "❌ Error detectado en los tests para Node ${{ matrix.node }}"
+
