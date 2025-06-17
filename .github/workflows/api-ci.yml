@@ -13,7 +13,7 @@ jobs:
 
     strategy:
       matrix:
-        node: [ 18.x ]  # antes era [16.x, 18.x]
+        node: [ 16.x, 18.x ] # antes era [16.x, 18.x]
 
     steps:
       - name: Checkout del código
