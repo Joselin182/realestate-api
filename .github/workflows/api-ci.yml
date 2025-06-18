@@ -1,5 +1,4 @@
 name: API CI - RealEstate
-
 on:
   push:
     branches: [main]
@@ -8,13 +7,11 @@ on:
 
 jobs:
   test:
-    name: Test API en Node.js
+    name: Test matrix.node API en Node.js
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
-        node: [ 18.x ]
-
+        node: [16.x, 18.x]
     steps:
       - name: Checkout del código
         uses: actions/checkout@v3
@@ -35,10 +32,6 @@ jobs:
       - name: Instalar dependencias
         run: npm ci
 
-      # Aquí agregamos la impresión de la versión de Node.js
-      - name: Mostrar versión de Node.js
-        run: node --version
-
       - name: Ejecutar pruebas con Jest
         run: npm test
 
@@ -46,8 +39,8 @@ jobs:
         if: success()
         run: echo "✅ API funcional en Node ${{ matrix.node }}"
 
-      - name: Reportar error
+      - name: Reportar falla
         if: failure()
-        run: echo "❌ Error detectado en los tests para Node ${{ matrix.node }}"
+        run: echo "❌ error Falla detectada en los tests para Node ${{ matrix.node }}"
 
 
